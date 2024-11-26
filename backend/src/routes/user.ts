@@ -5,32 +5,36 @@ import { userMiddleware, authMiddleware } from "../validation";
 const express= require('express');
 const router= express.Router();
 const jwt= require('jsonwebtoken');
+import addUser from "../services/user-services";
 
 
 router.post('/signUp', userMiddleware, async (req: any,res:any,next:any) => {
 
-    const username= req.body.username;
+    const name= req.body.username;
     const password= req.body.password;
-    const firstname= req.body.firstName;
-    const lastname= req.body.lastName;
+    const email= req.body.email;
 
-
-    const userData= await User.create({
-        username,
+   const user= await addUser({
+        name,
         password,
-        firstname,
-        lastname
-    })
+        email
+    });
 
-    const userId= userData._id;
-
+    
     const token= jwt.sign({
-        userId
+        email
     }, JWT_SECRET );
+    
+    if(user.type == "success"){
+       return res.json({
+            msg: "Success",
+            email: email,
+            token
+        })
+    }
 
     res.json({
-        msg: "user created successfully!",
-        token
+        msg: "Error"
     })
 }) 
 

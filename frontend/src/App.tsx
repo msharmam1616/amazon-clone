@@ -10,9 +10,9 @@ import {ProductSearchPage} from './components/Product Search Page/ProductSearchP
 import { Cart } from './components/Cart/Cart';
 
 function App() {
-
+  
   return (
-    <div className='font-display h-full'>
+    <div className='font-display h-full overflow-hidden' >
       <RecoilRoot>
       <BrowserRouter>
         <Routes>

@@ -1,43 +1,32 @@
-import { Product } from "../db";
+import { addProduct } from "../services/product-services";
 import { authMiddleware } from "../validation";
 
-
+const express= require('express');
 const router= express.Router();
 
-router.post('/addProduct', authMiddleware, (req: any, res:any ,next: any) =>{
-    
-    const category= req.body.category;
-    const type= req.body.type;
-    const name= req.body.name;
-    const brand= req.body.brand;
-    const price= req.body.price;
-    const imagePath= req.body.imagePath;
-    const description= req.body.description;
-    const quantity= req.body.quantity;
-    const rating= req.body.rating;
-
-    Product.addOne({
-        category,
-        type,
-        name,
-        brand,
-        price,
-        imagePath,
-        description,
-        quantity,
-        rating
-    });
-})
-
-
-router.get('/findProduct', authMiddleware, async (req:any, res: any, next: any) => {
-    const filter= req.params.filter;
-    const products= await Product.findAll({
-        name: new RegExp(filter)
+router.post('/addProduct', async (req: any, res:any ,next: any) =>{
+    const product= req.body;
+    addProduct(product).then(()=>{
+       return res.json({
+        type: "Success",
+        msg: "Product Added Successfully!"
+       })
+    }).catch(()=>{
+       return res.json({
+            type: "Error",
+            msg: "Error while adding product!"
+        })
     })
-
-    res.json(products);
 })
 
+
+// router.get('/findProduct', authMiddleware, async (req:any, res: any, next: any) => {
+//     const filter= req.params.filter;
+//     const products= await Product.findAll({
+//         name: new RegExp(filter)
+//     })
+
+//     res.json(products);
+// })
 
 module.exports= router;

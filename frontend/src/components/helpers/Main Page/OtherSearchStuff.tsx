@@ -9,17 +9,17 @@ export function OtherSearchStuff(){
     const userName = useRecoilValue(userAtom).firstName;
 
     return (
-        <div className='flex items-center justify-end pl-5'>
-            <div>EN</div>
+        <div className='flex items-center justify-end pl-5 my-2'>
+            <div className='text-sm'>EN</div>
             <div className='pl-4'>
             <div className='text-xs'>Hello, {userName}</div>
-            <div>My Cart</div>
+            <div className='text-sm'>My Cart</div>
             </div>
             <div className='pl-4'>
             <div className='text-xs'>Returns</div>
-            <div>& Orders</div>
+            <div className='text-sm'>& Orders</div>
             </div>
-            { isAdmin ? <div className='text-xs ml-4 bg-yellow-300 p-3 border rounded-md text-black hover:bg-yellow-600 hover:text-white hover:cursor-pointer' onClick={()=>{
+            { isAdmin ? <div className='text-xs ml-[8.5rem] bg-yellow-300 p-3 border rounded-md text-black hover:bg-yellow-600 hover:text-white hover:cursor-pointer flex-end' onClick={()=>{
                 navigate('addProduct');
             }}> Add Product </div> : <img className='w-23 h-20 pl-3' src={cart}></img>}
         </div>
