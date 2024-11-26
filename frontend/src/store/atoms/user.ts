@@ -7,7 +7,8 @@ export const userAtom= atom({
         lastName: "",
         isLoggedin: "false",
         isAdmin: "true",
-        token: ""
+        token: "",
+        touched: false
     }
 })
 

@@ -6,9 +6,8 @@ import Amazon_logo from './Amazon_logo.svg';
 
 
 export const IMAGES=[
-    card_1,
-    card_2,
-    card_3,
-    card_4,
-    Amazon_logo
+    "https://m.media-amazon.com/images/I/61tDqtwpxbL._SR1236,1080_.jpg",
+    "https://m.media-amazon.com/images/I/51-iXLu+c9L._SR1236,1080_.jpg",
+    "https://m.media-amazon.com/images/I/61frFZi7LQL._SR1236,1080_.jpg",
+    "https://m.media-amazon.com/images/I/61frFZi7LQL._SR1236,1080_.jpg"
 ]
